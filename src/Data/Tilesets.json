@@ -1,0 +1,9 @@
+{
+	"map-sprites": {
+		"variants": ["spring", "fall", "winter", "flower"],
+		"size": {
+			"height": 288,
+			"width": 640
+		}
+	}
+}
