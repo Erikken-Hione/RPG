@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/RPG/static/css/main.7c3e3f7f.chunk.css",
+    "main.js": "/RPG/static/js/main.02524f05.chunk.js",
+    "main.js.map": "/RPG/static/js/main.02524f05.chunk.js.map",
+    "runtime-main.js": "/RPG/static/js/runtime-main.858c60fd.js",
+    "runtime-main.js.map": "/RPG/static/js/runtime-main.858c60fd.js.map",
+    "static/css/2.ee241de9.chunk.css": "/RPG/static/css/2.ee241de9.chunk.css",
+    "static/js/2.b2926d63.chunk.js": "/RPG/static/js/2.b2926d63.chunk.js",
+    "static/js/2.b2926d63.chunk.js.map": "/RPG/static/js/2.b2926d63.chunk.js.map",
+    "index.html": "/RPG/index.html",
+    "precache-manifest.92d0daeea35788dcc4401df470664bfe.js": "/RPG/precache-manifest.92d0daeea35788dcc4401df470664bfe.js",
+    "service-worker.js": "/RPG/service-worker.js",
+    "static/css/2.ee241de9.chunk.css.map": "/RPG/static/css/2.ee241de9.chunk.css.map",
+    "static/css/main.7c3e3f7f.chunk.css.map": "/RPG/static/css/main.7c3e3f7f.chunk.css.map",
+    "static/js/2.b2926d63.chunk.js.LICENSE.txt": "/RPG/static/js/2.b2926d63.chunk.js.LICENSE.txt",
+    "static/media/fall.png": "/RPG/static/media/fall.29cbe0d4.png",
+    "static/media/flower.png": "/RPG/static/media/flower.f00a854a.png",
+    "static/media/ninja.png": "/RPG/static/media/ninja.041bc7b2.png",
+    "static/media/spring.png": "/RPG/static/media/spring.4ad9d4a2.png",
+    "static/media/winter.png": "/RPG/static/media/winter.a1cf1d29.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.858c60fd.js",
+    "static/css/2.ee241de9.chunk.css",
+    "static/js/2.b2926d63.chunk.js",
+    "static/css/main.7c3e3f7f.chunk.css",
+    "static/js/main.02524f05.chunk.js"
+  ]
+}
