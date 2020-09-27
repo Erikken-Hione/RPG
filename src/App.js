@@ -32,7 +32,7 @@ useEffect(() => {
   console.log(renderCount.current)
 })
 
-  const [route, setRoute] = useState("maker")
+  const [route, setRoute] = useState("signin")
 
   const [isSignedIn, setIsSignedIn] = useState(false)
 

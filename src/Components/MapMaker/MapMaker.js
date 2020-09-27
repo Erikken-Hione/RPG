@@ -49,8 +49,8 @@ const MapMaker = () => {
   return <div className = "mapmaker"
     style={{
       position: "relative",
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: "1500px",
+      height: "650px",
       overflow: "auto",
       border: "1px solid black",
       }}
@@ -61,10 +61,12 @@ const MapMaker = () => {
         activeTile={activeTile}
         setActiveTile={setActiveTile}
         setTileset = {setTileset}
+        backgroundTile = {backgroundTile}
         setBackgroundTile = {setBackgroundTile}
         setBoolSwap = {setBoolSwap}
         setMapSize = {setMapSize}
         mapSize = {mapSize}
+        mapTiles = {tiles}
       />
 
       <Maps 

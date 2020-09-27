@@ -1,9 +1,11 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useContext} from 'react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import {routeContext} from '../../App.js';
 
-const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, setBackgroundTile, setBoolSwap, mapSize, setMapSize}) => {
-
+const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgroundTile,setBackgroundTile, setBoolSwap, mapSize, setMapSize, mapTiles}) => {
+	
+	// import possible tileset like spring, winter and so onn
 	const tilesetData = require("../../Data/Tilesets.json")
 	const tilesets = Object.keys(tilesetData).map((set) => ({
 		type: "group",
@@ -17,6 +19,8 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, setBack
 	const tilesetVariant = tileset
 	const {width, height} = tilesetData["map-sprites"].size
 
+
+	// creating tiles for tool bar
 	const tiles = []
 	let id = 0
  	for(let y = 0; y < height; y = y + 32 ) {
@@ -29,6 +33,8 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, setBack
  		tiles.push(row)
  	}
 
+ 	// creatting functions for changing map's widnth and height
+ 	// checks that entered only nmbers
  	const onlyNum = /^[0-9]+$/
  	const [mapIndex, setMapIndex] = useState({
  		width: "",
@@ -56,8 +62,13 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, setBack
  	}
 
  	const submitMapSizeChange = () => {
- 	 setMapSize(mapIndex)
+ 		if (onlyNum.test(mapIndex.width) && onlyNum.test(mapIndex.height)) {
+ 			 setMapSize(mapIndex)
+ 		}
+
  	}
+
+ 	// creating function which change working layer from front to back and vise versa
 
  	const layerInfo = useRef('Front')
 
@@ -70,6 +81,37 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, setBack
  		setBoolSwap((prev) => !prev)
  	}
 
+ 	// userInfo is from App.js which is extracted by Context
+ 	const {userInfo} = useContext(routeContext);
+
+ 	// uploading created map into database 
+ 	const fetchToUpload = (mapName) => {
+ 		if (mapName) {
+			fetch('http://localhost:3000/mapupload', {
+	 			method: 'put',
+	 			headers: {'Content-Type': 'application/json'},
+	 			body: JSON.stringify({
+	 				email: userInfo.email,
+	 				name: userInfo.name,
+	 				map: {
+	 					mapName: mapName,
+	 					mapInfo: {
+	 						mapSize: mapSize,
+	 						tiles: mapTiles
+						}
+	 				}
+	 			})
+	 		})
+	 		.then(alert('Map Saved'))
+ 		} else {
+ 			alert('Failed to upload the map')
+ 		}
+ 	}
+
+ 	const inputMapName = () => {
+ 		const mapName = prompt("Please enter map name: ")
+ 		return mapName
+ 	}
 
 	return (
     <div 
@@ -109,6 +151,11 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, setBack
 					<button 
 						onClick={() => changeLayer()} 
 						style={{ padding: "6px 20px", fontSize: 14}}>{layerInfo.current}</button>
+				</div>
+				<div style={{marginLeft: 8}}>
+					<button
+					onClick={() => fetchToUpload(inputMapName())}
+					style={{ padding: "6px 20px", fontSize: 14}}>Upload</button>
 				</div>
 
 	  	</div>
