@@ -3,7 +3,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {routeContext} from '../../App.js';
 
-const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgroundTile,setBackgroundTile, setBoolSwap, mapSize, setMapSize, mapTiles}) => {
+const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, setBoolSwap, mapSize, setMapSize, tiles, setTiles}) => {
 	
 	// import possible tileset like spring, winter and so onn
 	const tilesetData = require("../../Data/Tilesets.json")
@@ -22,7 +22,7 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgro
 
 
 	// creating tiles for tool bar
-	const tiles = []
+	const toolTiles = []
 	let id = 0
  	for(let y = 0; y < height; y = y + 32 ) {
  		const row = []
@@ -31,7 +31,7 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgro
  				x, y, id: id++
  			})
  		}
- 		tiles.push(row)
+ 		toolTiles.push(row)
  	}
 
  	// creatting functions for changing map's widnth and height
@@ -98,7 +98,7 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgro
 	 					mapName: mapName,
 	 					mapInfo: {
 	 						mapSize: mapSize,
-	 						tiles: mapTiles
+	 						tiles: tiles
 						}
 	 				}
 	 			})
@@ -110,13 +110,47 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgro
  	}
 
  	const inputMapName = () => {
- 		const mapName = prompt("Please enter map name: ").trim()
- 		if (mapName != "Default") {
-			return mapName
+ 		const mapName = prompt("Please enter map name: ")
+ 		if (mapName != "Default" && mapName) {
+			return mapName.trim()
+		} else if (!mapName) {
+			alert("Map's name can not be empty")
 		} else {
 			alert('"Default" name is prohibited')
 		}
  	}
+
+
+
+ 	//logic  of changing background
+  	const cloneMatrix = (m) => {
+	    const clone = new Array(m.length)
+	    for (let i=0; i < m.length; ++i ) {
+	      clone[i] = m[i].slice(0)
+	    }
+	    return clone;
+  	}
+
+  	const updateBackground = (x,y, tileset) => {
+  		setTiles((prev) => {
+  			const clone = cloneMatrix(prev)
+  			const update = {
+  				...clone[y][x],
+  				background: activeTile,
+  				background_set: tileset
+  			};
+  			clone[y][x] = update
+  			return clone
+  		})
+  	}
+
+  	const changeBackground = () => {
+  		tiles.map((row, y) => {
+  			row.map((tile, x) => {
+  				updateBackground(x,y, tileset)
+  			})
+  		})
+  	}
 
 	return (
     <div 
@@ -149,7 +183,7 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgro
 
 				<div style={{marginLeft: 8}}>
 					<button 
-						onClick={() => setBackgroundTile(activeTile)} 
+						onClick={() => changeBackground()} 
 						style={{ padding: "6px 20px", fontSize: 14}}>FILL</button>
 				</div>
 				<div style={{marginLeft: 8}}>
@@ -173,7 +207,7 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgro
 
   		<div style={{position: 'absolute', zIndex: 10, opacity: 0.55}}>
     		{
-	      	tiles.map((row, y) => (
+	      	toolTiles.map((row, y) => (
 	      		<div style={{ display: "flex" }}>
 	      			{row.map((tile, x) => 
 	    					<div 
@@ -192,7 +226,7 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgro
       </div>
   		<div >
     		{
-	      	tiles.map((row, y) => (
+	      	toolTiles.map((row, y) => (
 	      		<div style={{ display: "flex" }}>
 	      			{row.map((tile, x) => 
 	    					<div 

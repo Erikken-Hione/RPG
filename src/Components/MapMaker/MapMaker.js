@@ -9,7 +9,6 @@ const MapMaker = () => {
   const [tileset, setTileset] = useState('spring')
   const [activeTile, setActiveTile] = useState({x: 1*32, y: 4*32})
   const [tiles, setTiles] = useState([])
-  const [backgroundTile, setBackgroundTile] = useState({ x:-32, y:-32})
   const [mapSize, setMapSize] = useState({
     width: "600",
     height: "600"
@@ -37,8 +36,10 @@ const MapMaker = () => {
           id: id ++,
           v: {x:  160, y: 0},
           season_front: 'spring',
+          b: {x: 160, y: 0},
           season_back: 'spring',
-          b: {x: 160, y: 0}
+          background: {x: -32, y: -32},
+          background_set: 'spring'
         });
       }
       _tiles.push(row);
@@ -61,12 +62,11 @@ const MapMaker = () => {
         activeTile={activeTile}
         setActiveTile={setActiveTile}
         setTileset = {setTileset}
-        backgroundTile = {backgroundTile}
-        setBackgroundTile = {setBackgroundTile}
         setBoolSwap = {setBoolSwap}
         setMapSize = {setMapSize}
         mapSize = {mapSize}
-        mapTiles = {tiles}
+        tiles = {tiles}
+        setTiles = {setTiles}
       />
 
       <Maps 
@@ -76,11 +76,9 @@ const MapMaker = () => {
         activeTile={activeTile} 
         setTiles={setTiles}
         setTileset={setTileset}
-        backgroundTile={backgroundTile}
         zIndex = {zIndex}
         setzIndex = {setzIndex}
         boolSwap = {boolSwap}
-        setBackgroundTile = {setBackgroundTile}
       />
 
     </div>;
