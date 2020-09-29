@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8a3f64c8ae7552bb45db87322ef30a3f",
+    "revision": "4b8ff19a7a27a9e093de8ec997c00fb3",
     "url": "/RPG/index.html"
   },
   {
-    "revision": "1318b503c3de8f06d56c",
+    "revision": "9c9f480c2e330f4b72ad",
     "url": "/RPG/static/css/2.ee241de9.chunk.css"
   },
   {
-    "revision": "d5b8bf43356feba9ff5a",
+    "revision": "20e6747bdda6a8e8ea82",
     "url": "/RPG/static/css/main.8db83d62.chunk.css"
   },
   {
-    "revision": "1318b503c3de8f06d56c",
-    "url": "/RPG/static/js/2.b2926d63.chunk.js"
+    "revision": "9c9f480c2e330f4b72ad",
+    "url": "/RPG/static/js/2.a100dbb0.chunk.js"
   },
   {
     "revision": "a73511fdd0e79fea52c5f42ad1574633",
-    "url": "/RPG/static/js/2.b2926d63.chunk.js.LICENSE.txt"
+    "url": "/RPG/static/js/2.a100dbb0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d5b8bf43356feba9ff5a",
-    "url": "/RPG/static/js/main.2d259a99.chunk.js"
+    "revision": "20e6747bdda6a8e8ea82",
+    "url": "/RPG/static/js/main.52eeeb11.chunk.js"
   },
   {
     "revision": "a074495c28846bdcb295",
