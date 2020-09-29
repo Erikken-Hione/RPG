@@ -55,6 +55,7 @@ const Register = () => {
 					show('This email already registered')
 				}
 			})
+			.catch(err => show('Server crashed'))
 	}
 
 	const onSubmitSignIn = () => {

@@ -35,10 +35,10 @@ const MapMaker = () => {
           x,
           y,
           id: id ++,
-          v: {x:  -32, y: -32},
+          v: {x:  160, y: 0},
           season_front: 'spring',
           season_back: 'spring',
-          b: {x: -32, y: -32}
+          b: {x: 160, y: 0}
         });
       }
       _tiles.push(row);

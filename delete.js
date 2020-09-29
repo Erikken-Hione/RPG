@@ -66,55 +66,44 @@ const Game = () => {
 						}
 					])
 				} else {
-					return ([
-						{
-							value: "Default",
-							label: "Default"	
-						},
-						{
+					return ({
 						type: 'group',
 						name: userInfo.name + "'s Maps",
 						items: [{
 							value: 'None',
 							label: 'None'
-							}]
-						}
-					])
+						}]
+					})
+					}
 				}
-			})
-			setDataset(newDataset[0])
+			)
+			setDataset(newDataset)
 	})
-	.catch(err => alert('Failed to load the map'))
 	}, [])
 
 	console.log('dataset', dataset)
 
 	useEffect(() => {
-		if (currentMap != "Default") {
-			fetch("http://localhost:3000/loadmap", {
-				method: 'post',
-				headers: {'Content-Type': 'application/json'},
-				body: JSON.stringify({
-					email: userInfo.email
-				})
+		fetch("http://localhost:3000/loadmap", {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				email: userInfo.email
 			})
-			.then(response => response.json())
-			.then((map) => {
-				Object.values(map).map((key) => {
-					if (key) {
-						key.map((value) => {
-							if (value.mapName === currentMap) {
-								setTiles(value.mapInfo.tiles)
-								setMapSize(value.mapInfo.mapSize)
-							}
-						})
-					}
-				})
+		})
+		.then(response => response.json())
+		.then((map) => {
+			Object.values(map).map((key) => {
+				if (key) {
+					key.map((value) => {
+						if (value.mapName === currentMap) {
+							setTiles(value.mapInfo.tiles)
+							setMapSize(value.mapInfo.mapSize)
+						}
+					})
+				}
 			})
-			.catch(err => alert('Failed load the map'))
-		} else {
-			fetchDefaultMap()
-		}
+		})
 	}, [currentMap])
 
 	return (

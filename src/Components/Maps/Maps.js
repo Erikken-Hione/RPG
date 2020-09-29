@@ -45,26 +45,26 @@ const Maps = ({ tiles, tileset, mapSize, activeTile, setTiles, backgroundTile, z
     })
   }
 
-  const [save, setSave] = useState({
-    tiles: [],
-    background: {}
-  })
+  // const [save, setSave] = useState({
+  //   tiles: [],
+  //   background: {}
+  // })
 
-  const saveLoad = (key) => {
-    if(key === 'k') {
-        setSave({
-          tiles: tiles,
-          background: backgroundTile
-        })
-    } else if (key === 'l') {
-        setTiles(save.tiles)
-        setBackgroundTile(save.background)
-    }
-  }
+  // const saveLoad = (key) => {
+  //   if(key === 'k') {
+  //       setSave({
+  //         tiles: tiles,
+  //         background: backgroundTile
+  //       })
+  //   } else if (key === 'l') {
+  //       setTiles(save.tiles)
+  //       setBackgroundTile(save.background)
+  //   }
+  // }
 
-  useKeyPress(event => {
-    saveLoad(event.key.toLowerCase())
-  })
+  // useKeyPress(event => {
+  //   saveLoad(event.key.toLowerCase())
+  // })
 
   useEffect(()=>{
     if(boolSwap) {

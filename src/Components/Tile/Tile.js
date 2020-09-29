@@ -17,6 +17,7 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgro
 	}));
 
 	const tilesetVariant = tileset
+	console.log('tilesets', tilesets)
 	const {width, height} = tilesetData["map-sprites"].size
 
 
@@ -109,8 +110,12 @@ const Tile = ({tileset, position, activeTile, setActiveTile, setTileset, backgro
  	}
 
  	const inputMapName = () => {
- 		const mapName = prompt("Please enter map name: ")
- 		return mapName
+ 		const mapName = prompt("Please enter map name: ").trim()
+ 		if (mapName != "Default") {
+			return mapName
+		} else {
+			alert('"Default" name is prohibited')
+		}
  	}
 
 	return (
